@@ -114,7 +114,7 @@ for u, v in edges:
     w = abs(locations[u][0]-locations[v][0]) + abs(locations[u][1]-locations[v][1])
     G.add_edge(u, v, weight=w)
 
-# -----------------------
+# ---------------------------------------------dij solver----------------------------------
 start, end = "Bunker", "dummy_bunker"
 must_visit = ["Pharmacy", "Hospital", "GasStation"]
 grocers = ["Grocers1", "Grocery2"]
@@ -147,7 +147,7 @@ for g in grocers:
                 best_path = full_path
                 best_grocer = g
 
-# =====================
+# =====================plot========================================================
 pos = {k: v for k, v in locations.items()}
 plt.figure(figsize=(11,8))
 nx.draw(G, pos, with_labels=True, node_color='lightgray', node_size=600, font_size=8)
@@ -161,5 +161,5 @@ for idx, node in enumerate(best_path):
     x, y = pos[node]
     plt.text(x, y+25, f"{idx+1}", fontsize=9, ha='center', color='black')
 
-plt.title(f"最优生存路线（经 {best_grocer}，总距离 {best_total:.0f}）", fontsize=13)
+plt.title(f"minimum path（from {best_grocer},total distance {best_total:.0f}）", fontsize=13)
 plt.show()
